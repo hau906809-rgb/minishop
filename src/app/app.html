@@ -1,0 +1,12 @@
+<div class="app-shell">
+  <app-header />
+  <main class="main-content">
+    <router-outlet />
+  </main>
+  <app-footer />
+  <app-bottom-nav />
+
+  @if (cart.toast(); as msg) {
+    <div class="toast-popup">{{ msg }}</div>
+  }
+</div>

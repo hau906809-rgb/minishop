@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="top">
+    <a routerLink="/" class="logo">🌼 Orange<span>Bloom</span></a>
+    <div class="top-actions">
+      <a routerLink="/wishlist" class="cart" title="Yêu thích">❤️ <b>{{ wishlist.count() }}</b></a>
+      <a routerLink="/cart" class="cart">🛒 <b>{{ cart.count() }}</b></a>
+    </div>
+  </div>
+  <form class="search" (submit)="$event.preventDefault(); search(q.value)">
+    <input #q type="search" placeholder="Tìm bó hoa bạn yêu thích..." />
+    <button type="submit">Tìm</button>
+  </form>
+  <nav class="menu">
+    <a routerLink="/">Trang chủ</a>
+    <a routerLink="/products">Sản phẩm</a>
+    <a routerLink="/khuyen-mai">Khuyến mãi</a>
+    <a routerLink="/bai_viet">Bài viết</a>
+    <a routerLink="/gallery">Gallery</a>
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/orders">Đơn hàng</a>
+      @if (auth.isAdmin()) {
+        <a routerLink="/admin">Quản trị</a>
+      }
+      <a href="javascript:void(0)" (click)="logout()">Đăng xuất ({{ auth.user()?.name?.split(' ')?.slice(-1)?.[0] }})</a>
+    } @else {
+      <a routerLink="/login">Đăng nhập</a>
+    }
+  </nav>
+</header>

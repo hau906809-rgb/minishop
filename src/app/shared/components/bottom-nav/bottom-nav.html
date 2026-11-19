@@ -1,0 +1,6 @@
+<nav class="bottom-nav">
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">🏠<span>Trang chủ</span></a>
+  <a routerLink="/products" routerLinkActive="active">📂<span>Danh mục</span></a>
+  <a routerLink="/bai_viet" routerLinkActive="active">📰<span>Bài viết</span></a>
+  <a routerLink="/cart" routerLinkActive="active">🛒<span>Giỏ hàng ({{ cart.count() }})</span></a>
+</nav>

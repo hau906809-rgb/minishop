@@ -1,0 +1,192 @@
+<!-- HERO SLIDER SECTION -->
+<section class="hero-slider">
+  <img
+    src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=900&auto=format&fit=crop"
+    alt="Hoa tươi rực rỡ"
+    class="hero-img">
+
+  <div class="hero-content">
+    <h1>Trao hoa tươi, gửi yêu thương</h1>
+    <p>Ưu đãi đặc biệt đến 30% cho khách hàng mới</p>
+    <a routerLink="/khuyen-mai" class="btn-hero">
+      Khám phá ngay →
+    </a>
+  </div>
+  <div class="slider-dots">● ○ ○</div>
+</section>
+
+@if (loading()) {
+  <div class="spinner"></div>
+} @else {
+  <!-- DANH MỤC HOA -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">Danh mục hoa</h2>
+      <a routerLink="/products">Xem tất cả ›</a>
+    </div>
+    <div class="cat-list">
+      @for (c of categories(); track c.id) {
+        <a class="cat" [routerLink]="['/category', c.slug]">
+          <span>{{ c.icon }}</span>
+          {{ c.name }}
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- HOA TƯƠI MỚI (SẢN PHẨM MỚI) -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">🌷 Hoa tươi mới</h2>
+      <a routerLink="/products">Xem tất cả ›</a>
+    </div>
+    <div class="product-grid">
+      @for (p of newProducts(); track p.id) {
+        <app-product-card
+          [productId]="p.id"
+          [name]="p.name"
+          [price]="p.price"
+          [image]="p.image"
+          [slug]="p.slug"
+          [oldPrice]="p.oldPrice"
+          [hot]="p.hot"
+          [stock]="p.stock"
+          (add)="cart.add(p)" />
+      }
+    </div>
+  </section>
+
+  <!-- BANNER XEN KẼ 1 -->
+  @if (banners()[0]; as b) {
+    <a class="promo-banner" [routerLink]="b.link">
+      <img [src]="b.image" [alt]="b.title" />
+      <div class="promo-content">
+        <h3>{{ b.title }}</h3>
+        <p>{{ b.subtitle }}</p>
+        <span class="btn-banner">Mua ngay →</span>
+      </div>
+    </a>
+  }
+
+  <!-- HOA BÁN CHẠY -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">🔥 Hoa bán chạy nhất</h2>
+      <a routerLink="/products">Xem tất cả ›</a>
+    </div>
+    <div class="product-grid">
+      @for (p of bestSellers(); track p.id) {
+        <app-product-card
+          [productId]="p.id"
+          [name]="p.name"
+          [price]="p.price"
+          [image]="p.image"
+          [slug]="p.slug"
+          [oldPrice]="p.oldPrice"
+          [hot]="p.hot"
+          [stock]="p.stock"
+          (add)="cart.add(p)" />
+      }
+    </div>
+  </section>
+
+  <!-- BANNER XEN KẼ 2 -->
+  @if (banners()[1]; as b) {
+    <a class="promo-banner" [routerLink]="b.link">
+      <img [src]="b.image" [alt]="b.title" />
+      <div class="promo-content">
+        <h3>{{ b.title }}</h3>
+        <p>{{ b.subtitle }}</p>
+        <span class="btn-banner">Khám phá ngay →</span>
+      </div>
+    </a>
+  }
+
+  <!-- HOA KHUYẾN MÃI / ƯU ĐÃI HÔM NAY -->
+  <section class="section">
+    <div class="section-head">
+      <h2 class="section-title">💥 Ưu đãi hôm nay</h2>
+      <a routerLink="/khuyen-mai">Xem tất cả ›</a>
+    </div>
+    <div class="product-grid">
+      @for (p of saleProducts(); track p.id) {
+        <app-product-card
+          [productId]="p.id"
+          [name]="p.name"
+          [price]="p.price"
+          [image]="p.image"
+          [slug]="p.slug"
+          [oldPrice]="p.oldPrice"
+          [hot]="p.hot"
+          [stock]="p.stock"
+          (add)="cart.add(p)" />
+      }
+    </div>
+  </section>
+
+  <!-- FEATURES / CAM KẾT -->
+  <section class="features">
+    <div class="feature">
+      <span>🌸</span>
+      Hoa tươi<br>mỗi ngày
+    </div>
+    <div class="feature">
+      <span>🚚</span>
+      Giao hoa<br>tận nơi
+    </div>
+    <div class="feature">
+      <span>🎁</span>
+      Gói quà<br>tinh tế
+    </div>
+  </section>
+
+  <!-- FEEDBACK (ĐÁNH GIÁ KHÁCH HÀNG) - BÀI TEST LAB 1,2,3 -->
+  <section class="section feedback-section">
+    <div class="section-head">
+      <h2 class="section-title">💬 Khách hàng phản hồi</h2>
+      <span class="feedback-badge">10.000+ tin cậy</span>
+    </div>
+    <p class="subtitle">Những cảm nhận chân thực nhất từ khách hàng yêu hoa</p>
+
+    <div class="feedback-list">
+      @for (fb of feedbacks(); track fb.id) {
+        <article class="feedback-card">
+          <div class="feedback-header">
+            <img [src]="fb.avatar" [alt]="fb.name" class="feedback-avatar" />
+            <div class="feedback-info">
+              <h4 class="feedback-name">{{ fb.name }}</h4>
+              <div class="feedback-stars">{{ fb.stars }}</div>
+            </div>
+            <span class="feedback-date">{{ fb.date }}</span>
+          </div>
+          <p class="feedback-comment">"{{ fb.comment }}"</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- FORM NEWSLETTER (ĐĂNG KÝ BẢN TIN) - BÀI TEST LAB 1,2,3 -->
+  <section class="newsletter-card">
+    <span class="newsletter-icon">💌</span>
+    <h3>Đăng ký nhận bản tin</h3>
+    <p>Nhận ngay <b>Voucher giảm 10%</b> và cập nhật sớm nhất các mẫu hoa thiết kế mới mỗi tuần!</p>
+
+    <form class="newsletter-form" (submit)="handleSubscribe($event)">
+      <input
+        type="email"
+        placeholder="Nhập địa chỉ email của bạn..."
+        [value]="newsletterEmail()"
+        (input)="newsletterEmail.set($any($event.target).value)"
+        required />
+      <button type="submit" class="btn-newsletter">
+        ✨ Đăng ký nhận quà
+      </button>
+    </form>
+
+    @if (subscribed()) {
+      <div class="newsletter-success">
+        🎉 Cảm ơn bạn! Mã giảm giá <b>BLOOM10</b> đã được gửi tới email của bạn!
+      </div>
+    }
+  </section>
+}

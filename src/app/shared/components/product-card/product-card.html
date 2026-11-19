@@ -1,0 +1,22 @@
+<article class="product">
+  @if (hot()) { <span class="hot-badge">HOT</span> }
+  @if (oldPrice() > price()) { <span class="sale-badge">-{{ (1 - price() / oldPrice()) * 100 | number:'1.0-0' }}%</span> }
+  @if (productId()) {
+    <button type="button" class="wish-btn" (click)="toggleWish($event)" [title]="wishlist.has(productId()) ? 'Bỏ yêu thích' : 'Yêu thích'">
+      {{ wishlist.has(productId()) ? '❤️' : '🤍' }}
+    </button>
+  }
+  <a [routerLink]="['/product', slug()]">
+    <img [src]="image()" [alt]="name()" />
+    <h3>{{ name() }}</h3>
+  </a>
+  <strong>{{ price() | number:'1.0-0' }}đ</strong>
+  @if (oldPrice() > price()) {
+    <del>{{ oldPrice() | number:'1.0-0' }}đ</del>
+  }
+  @if (stock() > 0) { <p class="in-stock">Còn {{ stock() }} sản phẩm</p> }
+  @else { <p class="out-stock">Hết hàng</p> }
+  <button type="button" [disabled]="stock() === 0" (click)="addToCart()">
+    {{ stock() > 0 ? 'Mua – Thêm vào giỏ' : 'Hết hàng' }}
+  </button>
+</article>
