@@ -6,5 +6,5 @@
 .search { display: flex; gap: 6px; margin-top: 10px; }
 .search input { flex: 1; min-width: 0; padding: 10px; border: 0; border-radius: 8px; }
 .search button { border: 0; border-radius: 8px; padding: 0 14px; background: #c2410c; color: white; }
-.menu { display: flex; gap: 14px; overflow-x: auto; margin-top: 10px; font-size: 14px; white-space: nowrap; }
-.menu a { opacity: .9; }
+.menu { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 13px; }
+.menu a { opacity: .92; }

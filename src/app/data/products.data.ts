@@ -154,7 +154,7 @@ export const PRODUCTS: Product[] = [
     hot: true,
     stock: 9,
     sold: 130,
-    image: 'https://images.unsplash.com/photo-1494336934272-f0efcedfc8a9?w=500&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&auto=format&fit=crop',
     description: 'Bó hoa tulip vàng Hà Lan mang thông điệp rạng rỡ và thành công.'
   },
   {
@@ -167,7 +167,7 @@ export const PRODUCTS: Product[] = [
     hot: false,
     stock: 14,
     sold: 88,
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?w=500&auto=format&fit=crop',
     description: 'Hộp hoa tròn nắp mica trong suốt hiện đại và quý phái.'
   }
 ];
@@ -214,7 +214,7 @@ export const BANNERS: Banner[] = [
     slug: 'mot-bo-hoa-ngan-loi-yeu',
     subtitle: 'Miễn phí thiệp chúc mừng cao cấp',
     link: '/khuyen-mai',
-    image: 'https://images.unsplash.com/photo-1494336934272-f0efcedfc8a9?w=900&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=900&auto=format&fit=crop'
   },
   {
     id: 2,
